@@ -1,4 +1,5 @@
 
+from numpy import ndarray
 import pandas as pd  
 from sklearn.utils.validation import check_is_fitted
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -47,6 +48,7 @@ class GroupImputer(BaseEstimator, TransformerMixin):
         impute_map = X.groupby(self.group_cols)[self.target]\
             .agg(self.metric).reset_index(drop=False)
         
+
         self.impute_map_ = impute_map
         
         return self 
@@ -60,7 +62,11 @@ class GroupImputer(BaseEstimator, TransformerMixin):
         
         for index, row in self.impute_map_.iterrows():
             ind = (X[self.group_cols] == row[self.group_cols]).all(axis=1)
-            X.loc[ind, self.target] = X.loc[ind, self.target].fillna(row[self.target])
+            # Check: if mode is an array select first element
+            fill = row[self.target]
+            if type(fill) == ndarray:
+                fill = fill[0]
+            X.loc[ind, self.target] = X.loc[ind, self.target].fillna(fill)
         
         return X.values
     
