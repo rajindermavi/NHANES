@@ -40,7 +40,6 @@ class NHANES(object):
             year = int(year)
             cycle = str(year)+'-'+str(year+1)
             cycle_df = self.construct_cycle_df(cycle, letter)
-            cycle_df['Cycle'] = year
             
             self.df = cycle_df if self.df is None else pd.concat([self.df,cycle_df])
                   
