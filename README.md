@@ -6,12 +6,16 @@ This project collects data from the NHANES [website](https://www.cdc.gov/nchs/nh
 
 Data is collected over several steps in the NHANES/nhanes folder.
 
-* GetData: Collect raw data sets from the NHANES site and join them into a single relational table.
+* GetData.ipynb: Collect raw data sets from the NHANES site and join them into a single relational table.
 
-* PreProcessData: Recode data into format useful for analysis and prediction.
+* PreProcessData.ipynb: Recode data into format useful for analysis and prediction.
 
-* WrangleData: Examine missing data. Drop records with excessive missing data. Split training/validation/test sets. Impute data using training set.
+* WrangleData.ipynb: Examine missing data. Drop records with excessive missing data. Split training/validation/test sets. Impute data using training set.
 
 ## EDA
 
-In the EDA notebook, the hypertension target variable is created. The dataset is now ready for predictive analysis.
+* EDA.ipynb: In the EDA notebook, the hypertension target variable is created. The dataset is now ready for predictive analysis.
+
+## Predictive Analysis
+
+* HypertensiveML.ipynb: Several predictive models are constructed to predict hypertension from feature data. Note that all feature data can readily be obtained from a patient from a simple questionaire.
